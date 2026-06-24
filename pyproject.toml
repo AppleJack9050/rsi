@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rsi"
+version = "0.1.0"
+description = "Recursive, non-trainable kernel-optimization agent framework on the Claude Agent SDK"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "claude-agent-sdk>=0.2.109",
+]
+
+# Heavy / hardware-specific deps (PyTorch cu128 for Blackwell sm_120, Triton) are
+# installed by scripts/setup_env.sh, NOT pinned here, because the right wheel
+# depends on the CUDA toolchain. `pip install -e .` installs only the SDK.
+[project.optional-dependencies]
+gpu = ["torch", "triton", "numpy", "pandas"]
+vllm = ["vllm"]
+
+[project.scripts]
+rsi = "rsi.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["rsi*"]

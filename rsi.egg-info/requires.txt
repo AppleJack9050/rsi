@@ -1,0 +1,10 @@
+claude-agent-sdk>=0.2.109
+
+[gpu]
+torch
+triton
+numpy
+pandas
+
+[vllm]
+vllm

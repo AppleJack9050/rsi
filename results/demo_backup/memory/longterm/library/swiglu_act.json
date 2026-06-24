@@ -1,0 +1,6 @@
+{
+  "op": "swiglu_act",
+  "speedup": 1.509,
+  "kernel_id": "02feab2ac0",
+  "ts": 1782332900.5370977
+}

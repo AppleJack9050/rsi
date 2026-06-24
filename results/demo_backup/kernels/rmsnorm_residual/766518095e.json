@@ -1,0 +1,41 @@
+{
+  "op": "rmsnorm_residual",
+  "kernel_id": "766518095e",
+  "compiles": true,
+  "compile_log": "launched on shape 'decode'; output (32, 2048) torch.float16",
+  "ts": 1782331013.6186433,
+  "correct": true,
+  "max_abs_err": 0.0078125,
+  "max_rel_err": 0.015679581090807915,
+  "verify": {
+    "decode": {
+      "ok": true,
+      "max_abs_err": 0.0078125,
+      "max_rel_err": 0.0031468586530536413
+    },
+    "prefill": {
+      "ok": true,
+      "max_abs_err": 0.0078125,
+      "max_rel_err": 0.015679581090807915
+    }
+  },
+  "speedup": 4.901,
+  "bench": {
+    "decode": {
+      "correct": true,
+      "kernel_ms": 0.00499,
+      "ref_ms": 0.03241,
+      "speedup": 6.495,
+      "achieved_gbps": 79.6,
+      "pct_peak_bw": 4.4
+    },
+    "prefill": {
+      "correct": true,
+      "kernel_ms": 0.0352,
+      "ref_ms": 0.1302,
+      "speedup": 3.699,
+      "achieved_gbps": 1430.1,
+      "pct_peak_bw": 79.8
+    }
+  }
+}

@@ -1,0 +1,3 @@
+{"ts": 1782330289.209553, "phase": "seed", "best_speedup": 4.433, "kernel_id": "d1518805e7"}
+{"ts": 1782330538.1014767, "phase": "opt1", "best_speedup": 5.121, "kernel_id": "f8aefb480f"}
+{"ts": 1782331234.9033003, "phase": "opt2", "best_speedup": 6.301, "kernel_id": "40fb725dff"}

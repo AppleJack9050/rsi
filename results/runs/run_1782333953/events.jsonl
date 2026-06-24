@@ -1,0 +1,47 @@
+{"ts": 1782333953.6546118, "event": "op_start", "op": "rmsnorm_residual", "rounds": 3}
+{"ts": 1782333959.1002958, "event": "PreToolUse", "tool": "ToolSearch"}
+{"ts": 1782333969.1149364, "event": "PreToolUse", "tool": "Agent"}
+{"ts": 1782333976.7709713, "event": "PreToolUse", "tool": "mcp__rsi__get_op_spec"}
+{"ts": 1782333978.5440748, "event": "PostToolUse", "tool": "mcp__rsi__get_op_spec"}
+{"ts": 1782333978.54579, "event": "PreToolUse", "tool": "mcp__rsi__read_memory"}
+{"ts": 1782333978.5495143, "event": "PostToolUse", "tool": "mcp__rsi__read_memory"}
+{"ts": 1782334159.7754526, "event": "PreToolUse", "tool": "mcp__rsi__compile_triton_kernel"}
+{"ts": 1782334162.085674, "event": "PostToolUse", "tool": "mcp__rsi__compile_triton_kernel"}
+{"ts": 1782334165.318691, "event": "PreToolUse", "tool": "mcp__rsi__verify_kernel"}
+{"ts": 1782334165.9203446, "event": "PostToolUse", "tool": "mcp__rsi__verify_kernel"}
+{"ts": 1782334169.326011, "event": "PreToolUse", "tool": "mcp__rsi__benchmark_kernel"}
+{"ts": 1782334171.1155436, "event": "PostToolUse", "tool": "mcp__rsi__benchmark_kernel"}
+{"ts": 1782334184.1529799, "event": "phase", "label": "rmsnorm_residual:seed", "model": "sonnet", "cost_usd": 0.3309005, "spent_usd": 0.3309, "error": null}
+{"ts": 1782334188.6195211, "event": "PreToolUse", "tool": "ToolSearch"}
+{"ts": 1782334197.6743655, "event": "PreToolUse", "tool": "Agent"}
+{"ts": 1782334200.8018355, "event": "PreToolUse", "tool": "ToolSearch"}
+{"ts": 1782334204.4638891, "event": "PreToolUse", "tool": "mcp__rsi__read_memory"}
+{"ts": 1782334204.4695969, "event": "PostToolUse", "tool": "mcp__rsi__read_memory"}
+{"ts": 1782334220.6652606, "event": "PreToolUse", "tool": "mcp__rsi__profile_kernel"}
+{"ts": 1782334220.6696901, "event": "PostToolUse", "tool": "mcp__rsi__profile_kernel"}
+{"ts": 1782334220.6709344, "event": "PreToolUse", "tool": "mcp__rsi__get_op_spec"}
+{"ts": 1782334220.6795192, "event": "PostToolUse", "tool": "mcp__rsi__get_op_spec"}
+{"ts": 1782335107.4201443, "event": "PreToolUse", "tool": "mcp__rsi__compile_triton_kernel"}
+{"ts": 1782335112.1259735, "event": "PostToolUse", "tool": "mcp__rsi__compile_triton_kernel"}
+{"ts": 1782335117.01863, "event": "PreToolUse", "tool": "mcp__rsi__verify_kernel"}
+{"ts": 1782335120.7384932, "event": "PostToolUse", "tool": "mcp__rsi__verify_kernel"}
+{"ts": 1782335124.1318405, "event": "PreToolUse", "tool": "mcp__rsi__benchmark_kernel"}
+{"ts": 1782335128.3847384, "event": "PostToolUse", "tool": "mcp__rsi__benchmark_kernel"}
+{"ts": 1782335146.619308, "event": "PreToolUse", "tool": "mcp__rsi__record_strategy"}
+{"ts": 1782335151.5976245, "event": "PreToolUse", "tool": "mcp__rsi__record_strategy"}
+{"ts": 1782335156.884035, "event": "PreToolUse", "tool": "mcp__rsi__record_strategy"}
+{"ts": 1782335164.5910075, "event": "PreToolUse", "tool": "mcp__rsi__record_strategy"}
+{"ts": 1782335164.5952618, "event": "PostToolUse", "tool": "mcp__rsi__record_strategy"}
+{"ts": 1782335176.8220348, "event": "phase", "label": "rmsnorm_residual:opt1", "model": "sonnet", "cost_usd": 0.9326234999999999, "spent_usd": 1.2635, "error": null}
+{"ts": 1782335183.573324, "event": "PreToolUse", "tool": "ToolSearch"}
+{"ts": 1782335194.2825203, "event": "PreToolUse", "tool": "Agent"}
+{"ts": 1782335197.9103055, "event": "PreToolUse", "tool": "mcp__rsi__read_memory"}
+{"ts": 1782335197.9155092, "event": "PostToolUse", "tool": "mcp__rsi__read_memory"}
+{"ts": 1782335198.2642052, "event": "PreToolUse", "tool": "mcp__rsi__profile_kernel"}
+{"ts": 1782335198.2680008, "event": "PostToolUse", "tool": "mcp__rsi__profile_kernel"}
+{"ts": 1782335528.9071312, "event": "PreToolUse", "tool": "mcp__rsi__compile_triton_kernel"}
+{"ts": 1782335533.4217868, "event": "PostToolUse", "tool": "mcp__rsi__compile_triton_kernel"}
+{"ts": 1782335536.2671597, "event": "PreToolUse", "tool": "mcp__rsi__verify_kernel"}
+{"ts": 1782335540.8890471, "event": "PostToolUse", "tool": "mcp__rsi__verify_kernel"}
+{"ts": 1782335545.1859548, "event": "PreToolUse", "tool": "mcp__rsi__benchmark_kernel"}
+{"ts": 1782335550.2949095, "event": "PostToolUse", "tool": "mcp__rsi__benchmark_kernel"}

@@ -1,0 +1,56 @@
+{
+  "op": "rmsnorm_residual",
+  "kernel_id": "c1782b5792",
+  "compiles": true,
+  "compile_log": "launched on shape 'decode'; output (32, 2048) torch.float16",
+  "ts": 1782329254.3341818,
+  "correct": true,
+  "max_abs_err": 0.015625,
+  "max_rel_err": 0.01113868411630392,
+  "verify": {
+    "decode": {
+      "ok": true,
+      "max_abs_err": 0.0078125,
+      "max_rel_err": 0.008211717009544373
+    },
+    "prefill": {
+      "ok": true,
+      "max_abs_err": 0.015625,
+      "max_rel_err": 0.01113868411630392
+    }
+  },
+  "speedup": 1.796,
+  "bench": {
+    "decode": {
+      "correct": true,
+      "kernel_ms": 0.03437,
+      "ref_ms": 0.03218,
+      "speedup": 0.936,
+      "achieved_gbps": 11.6,
+      "pct_peak_bw": 0.6
+    },
+    "prefill": {
+      "correct": true,
+      "kernel_ms": 0.03814,
+      "ref_ms": 0.13144,
+      "speedup": 3.446,
+      "achieved_gbps": 1319.7,
+      "pct_peak_bw": 73.6
+    }
+  },
+  "profiled": true,
+  "profile": {
+    "decode": {
+      "kernel_ms": 0.03437,
+      "achieved_gbps": 11.6,
+      "pct_peak_bw": 0.6,
+      "verdict": "launch/occupancy bound \u2014 kernel-launch or low occupancy dominates; raise occupancy (block/warps), reduce launches, increase work per program"
+    },
+    "prefill": {
+      "kernel_ms": 0.03814,
+      "achieved_gbps": 1319.7,
+      "pct_peak_bw": 73.6,
+      "verdict": "memory-bandwidth bound (near roofline) \u2014 focus on reducing bytes moved / fusing"
+    }
+  }
+}

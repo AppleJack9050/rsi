@@ -1,0 +1,79 @@
+{
+  "rmsnorm_residual": {
+    "kernel_id": "f2d455d906",
+    "speedup": 4.932,
+    "per_shape": {
+      "decode": {
+        "correct": true,
+        "kernel_ms": 0.00507,
+        "ref_ms": 0.03238,
+        "speedup": 6.38,
+        "achieved_gbps": 78.3,
+        "pct_peak_bw": 4.4
+      },
+      "prefill": {
+        "correct": true,
+        "kernel_ms": 0.03632,
+        "ref_ms": 0.13849,
+        "speedup": 3.813,
+        "achieved_gbps": 1385.9,
+        "pct_peak_bw": 77.3
+      }
+    },
+    "ts": 1782335198.2667394
+  },
+  "swiglu_act": {
+    "kernel_id": "6f3d49b0c6",
+    "speedup": 1.617,
+    "per_shape": {
+      "decode": {
+        "correct": true,
+        "kernel_ms": 0.00624,
+        "ref_ms": 0.01143,
+        "baseline_ms": 0.01143,
+        "baseline": "torch-eager",
+        "speedup": 1.831,
+        "achieved_gbps": 188.9,
+        "pct_peak_bw": 10.5
+      },
+      "prefill": {
+        "correct": true,
+        "kernel_ms": 0.09841,
+        "ref_ms": 0.14056,
+        "baseline_ms": 0.14056,
+        "baseline": "torch-eager",
+        "speedup": 1.428,
+        "achieved_gbps": 1534.4,
+        "pct_peak_bw": 85.6
+      }
+    },
+    "ts": 1782338512.3463244
+  },
+  "gqa_decode_attention": {
+    "kernel_id": "f63ec096e0",
+    "speedup": 0.971,
+    "per_shape": {
+      "s1k": {
+        "correct": true,
+        "kernel_ms": 0.09839,
+        "ref_ms": 1.1863,
+        "baseline_ms": 0.09254,
+        "baseline": "FlashAttention (SDPA: cuDNN\u2192FA-2)",
+        "speedup": 0.941,
+        "achieved_gbps": 1364.2,
+        "pct_peak_bw": 76.1
+      },
+      "s4k": {
+        "correct": true,
+        "kernel_ms": 0.17178,
+        "ref_ms": 2.31655,
+        "baseline_ms": 0.17218,
+        "baseline": "FlashAttention (SDPA: cuDNN\u2192FA-2)",
+        "speedup": 1.002,
+        "achieved_gbps": 1562.6,
+        "pct_peak_bw": 87.2
+      }
+    },
+    "ts": 1782337346.712504
+  }
+}

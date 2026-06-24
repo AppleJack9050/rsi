@@ -1,0 +1,30 @@
+{
+  "op": "swiglu_act",
+  "kernel_id": "6f3d49b0c6",
+  "compiles": true,
+  "correct": true,
+  "speedup": 1.617,
+  "bench": {
+    "decode": {
+      "correct": true,
+      "kernel_ms": 0.00624,
+      "ref_ms": 0.01143,
+      "baseline_ms": 0.01143,
+      "baseline": "torch-eager",
+      "speedup": 1.831,
+      "achieved_gbps": 188.9,
+      "pct_peak_bw": 10.5
+    },
+    "prefill": {
+      "correct": true,
+      "kernel_ms": 0.09841,
+      "ref_ms": 0.14056,
+      "baseline_ms": 0.14056,
+      "baseline": "torch-eager",
+      "speedup": 1.428,
+      "achieved_gbps": 1534.4,
+      "pct_peak_bw": 85.6
+    }
+  },
+  "ts": 1782338512.3456771
+}

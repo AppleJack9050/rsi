@@ -1,0 +1,35 @@
+{"ts": 1782329144.1341136, "event": "op_start", "op": "rmsnorm_residual", "rounds": 2}
+{"ts": 1782329149.158008, "event": "PreToolUse", "tool": "ToolSearch"}
+{"ts": 1782329160.4830806, "event": "PreToolUse", "tool": "Agent"}
+{"ts": 1782329165.2380476, "event": "PreToolUse", "tool": "ToolSearch"}
+{"ts": 1782329172.8601346, "event": "PreToolUse", "tool": "mcp__rsi__get_op_spec"}
+{"ts": 1782329173.6501558, "event": "PostToolUse", "tool": "mcp__rsi__get_op_spec"}
+{"ts": 1782329173.6520793, "event": "PreToolUse", "tool": "mcp__rsi__read_memory"}
+{"ts": 1782329173.6556838, "event": "PostToolUse", "tool": "mcp__rsi__read_memory"}
+{"ts": 1782329202.6753263, "event": "PreToolUse", "tool": "mcp__rsi__compile_triton_kernel"}
+{"ts": 1782329203.5623562, "event": "PostToolUse", "tool": "mcp__rsi__compile_triton_kernel"}
+{"ts": 1782329206.930544, "event": "PreToolUse", "tool": "mcp__rsi__verify_kernel"}
+{"ts": 1782329207.2034664, "event": "PostToolUse", "tool": "mcp__rsi__verify_kernel"}
+{"ts": 1782329211.6455793, "event": "PreToolUse", "tool": "mcp__rsi__benchmark_kernel"}
+{"ts": 1782329212.1919465, "event": "PostToolUse", "tool": "mcp__rsi__benchmark_kernel"}
+{"ts": 1782329225.9943404, "event": "phase", "label": "rmsnorm_residual:seed", "model": "sonnet", "cost_usd": 0.24444230000000003, "spent_usd": 0.2444, "error": null}
+{"ts": 1782329230.3752723, "event": "PreToolUse", "tool": "ToolSearch"}
+{"ts": 1782329237.379656, "event": "PreToolUse", "tool": "Agent"}
+{"ts": 1782329241.4211414, "event": "PreToolUse", "tool": "ToolSearch"}
+{"ts": 1782329251.50848, "event": "PreToolUse", "tool": "mcp__rsi__read_memory"}
+{"ts": 1782329251.5136006, "event": "PostToolUse", "tool": "mcp__rsi__read_memory"}
+{"ts": 1782329254.3313897, "event": "PreToolUse", "tool": "mcp__rsi__profile_kernel"}
+{"ts": 1782329254.3354857, "event": "PostToolUse", "tool": "mcp__rsi__profile_kernel"}
+{"ts": 1782329287.2010188, "event": "PreToolUse", "tool": "mcp__rsi__get_op_spec"}
+{"ts": 1782329287.2040417, "event": "PostToolUse", "tool": "mcp__rsi__get_op_spec"}
+{"ts": 1782329975.6281335, "event": "PreToolUse", "tool": "mcp__rsi__compile_triton_kernel"}
+{"ts": 1782329976.6060884, "event": "PostToolUse", "tool": "mcp__rsi__compile_triton_kernel"}
+{"ts": 1782329979.3145664, "event": "PreToolUse", "tool": "mcp__rsi__verify_kernel"}
+{"ts": 1782329980.616805, "event": "PostToolUse", "tool": "mcp__rsi__verify_kernel"}
+{"ts": 1782329982.975485, "event": "PreToolUse", "tool": "mcp__rsi__benchmark_kernel"}
+{"ts": 1782329984.7545254, "event": "PostToolUse", "tool": "mcp__rsi__benchmark_kernel"}
+{"ts": 1782329993.1478298, "event": "PreToolUse", "tool": "mcp__rsi__record_strategy"}
+{"ts": 1782329997.8209279, "event": "PreToolUse", "tool": "mcp__rsi__record_strategy"}
+{"ts": 1782329997.824386, "event": "PostToolUse", "tool": "mcp__rsi__record_strategy"}
+{"ts": 1782330006.3968074, "event": "phase", "label": "rmsnorm_residual:opt1", "model": "sonnet", "cost_usd": 0.8959699999999999, "spent_usd": 1.1404, "error": null}
+{"ts": 1782330006.397258, "event": "op_done", "op": "rmsnorm_residual", "best": {"op": "rmsnorm_residual", "kernel_id": "d1518805e7", "compiles": true, "compile_log": "launched on shape 'decode'; output (32, 2048) torch.float16", "ts": 1782329984.7518075, "correct": true, "max_abs_err": 0.0078125, "max_rel_err": 0.008490607142448425, "verify": {"decode": {"ok": true, "max_abs_err": 0.0078125, "max_rel_err": 0.0014684265479445457}, "prefill": {"ok": true, "max_abs_err": 0.0078125, "max_rel_err": 0.008490607142448425}}, "speedup": 4.439, "bench": {"decode": {"correct": true, "kernel_ms": 0.00602, "ref_ms": 0.03209, "speedup": 5.335, "achieved_gbps": 66.0, "pct_peak_bw": 3.7}, "prefill": {"correct": true, "kernel_ms": 0.03638, "ref_ms": 0.13439, "speedup": 3.694, "achieved_gbps": 1383.5, "pct_peak_bw": 77.2}}}, "spent_usd": 1.1404}

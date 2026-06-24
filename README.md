@@ -1,0 +1,95 @@
+# RSI — Recursive Kernel-Optimization Agent Framework
+
+A **recursive, non-trainable** multi-agent framework built on the **Claude Agent SDK**.
+Its flagship skill is a **kernel-writing subagent** that authors and optimizes **Triton**
+kernels for small-LLM inference ops, verified for correctness and benchmarked for
+**per-kernel speedup** against a PyTorch reference. Target hardware: **NVIDIA RTX 5090
+(Blackwell, sm_120)**; target model: **Qwen3-1.7B** (the public proxy for the unreleased
+Qwen3.5-2B — dims live in `rsi/config.py` and swap in one edit).
+
+"Recursive / self-improving but **no training**" = the system improves by *search* +
+*accumulated memory across runs*, never by updating model weights. This mirrors the
+reference repo [KernelMem](https://github.com/0satan0/KernelMem), whose ablation shows
+memory is the dominant factor in kernel-agent performance.
+
+## How it works
+
+```
+Orchestrator (Opus, Python-driven loop)            rsi/orchestrator.py
+  └─ per op: seed → (repair) → optimize × N         deterministic phases + budget
+       └─ kernel subagents (Sonnet/Haiku)           rsi/agents.py
+            ├─ kernel-generator   correct seed
+            ├─ kernel-optimizer   profile→memory→one change  (may Task→analyst)
+            ├─ kernel-repairer    fix compile/verify failures
+            └─ profiler-analyst   bottleneck diagnosis
+       backed by in-process MCP tools               rsi/tools.py
+         get_op_spec / compile / verify / benchmark / profile / read_memory / record_strategy
+       + dual-level memory                          rsi/memory/store.py
+         long-term: strategy cards + best-kernel library (persists across runs)
+         short-term: per-task refinement trajectory
+```
+
+The agents never touch the shell or filesystem directly — they pass Triton **source** to
+the MCP tools, which compile (import + JIT launch), verify (`torch.allclose`), and
+benchmark (`triton.testing.do_bench`) in-process and persist every attempt under
+`rsi/kernels/<op>/`. The winners and the lessons go into long-term memory, so the **next**
+run starts from them — that's the self-improvement.
+
+## Install
+
+```bash
+cd /home/elek/rsi
+bash scripts/setup_env.sh        # rsi + PyTorch/Triton for Blackwell sm_120
+python3 scripts/smoke_test.py    # deterministic: torch+Triton+harness+memory, no LLM
+```
+
+## Billing: your Claude subscription, never an API key
+
+All agents run on your **Claude subscription** (the same OAuth token in `~/.claude` that
+powers Claude Code) — **never** a metered API key. This is enforced in code:
+`config.enforce_subscription_auth()` strips `ANTHROPIC_API_KEY` /
+`ANTHROPIC_AUTH_TOKEN` / `ANTHROPIC_BASE_URL` / Bedrock / Vertex vars from the process
+and **refuses to run** if an API key is set or no subscription token is present. It fires
+at the start of every `rsi optimize` and in the orchestrator.
+
+```bash
+rsi auth        # show the active billing mode (should say: SUBSCRIPTION)
+```
+
+The `$` figures the runs print (`spent $1.14`) are **notional estimates** at API rates,
+shown for telemetry only. On a subscription nothing is charged in dollars — usage counts
+against your plan's rate-limit window, so the dollar "budget" caps just bound how much work
+each run does. To go easy on the rate-limit window, lower the effort: `RSI_EFFORT=medium`.
+
+## Run
+
+```bash
+rsi ops                                  # list target ops
+rsi optimize --op rmsnorm_residual --rounds 5
+rsi optimize --op all --passes 2         # full sweep + one recursive re-attack pass
+rsi optimize --op all --autonomous       # single Opus orchestrator delegating via Task
+rsi leaderboard                          # best kernel + speedup per op
+```
+
+Run it **twice** and watch the second run start from long-term memory and reach higher
+speedups in fewer phases — the no-training RSI claim, made measurable.
+
+## Target ops (Qwen3-1.7B)
+
+`rmsnorm_residual` · `swiglu_act` · `rope` · `softmax` · `gqa_decode_attention` (stretch).
+These are the memory-bandwidth-bound decode/MLP/norm ops where fusing PyTorch's multiple
+kernel launches into one Triton kernel realistically wins **~1.2–2×**.
+
+## Scope (honest)
+
+- **Headline metric:** per-kernel geomean speedup vs the eager PyTorch reference, gated on
+  `torch.allclose`. This is the achievable, verifiable win.
+- **Not** in scope: beating vLLM's batched continuous serving end-to-end — its
+  PagedAttention + continuous batching is near-optimal. (You can later wire winning kernels
+  into a vLLM custom backend to make a true end-to-end claim.)
+
+## Config knobs
+
+Everything is env-overridable (see `rsi/config.py`): model dims (`RSI_HIDDEN`, …), agent
+models (`RSI_MODEL_*`), budgets (`RSI_PER_RUN_USD`, `RSI_ROUNDS`, `RSI_EFFORT`), target
+speedup (`RSI_TARGET_SPEEDUP`), peak bandwidth for roofline scoring (`RSI_PEAK_BW_GBPS`).

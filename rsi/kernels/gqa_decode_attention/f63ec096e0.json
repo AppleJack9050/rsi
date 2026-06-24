@@ -1,0 +1,45 @@
+{
+  "op": "gqa_decode_attention",
+  "kernel_id": "f63ec096e0",
+  "compiles": true,
+  "compile_log": "launched on shape 's1k'; output (32, 16, 128) torch.float16",
+  "ts": 1782337346.711216,
+  "correct": true,
+  "max_abs_err": 0.0001220703125,
+  "max_rel_err": 0.025788340717554092,
+  "verify": {
+    "s1k": {
+      "ok": true,
+      "max_abs_err": 0.0001220703125,
+      "max_rel_err": 0.021844929084181786
+    },
+    "s4k": {
+      "ok": true,
+      "max_abs_err": 3.0517578125e-05,
+      "max_rel_err": 0.025788340717554092
+    }
+  },
+  "speedup": 0.971,
+  "bench": {
+    "s1k": {
+      "correct": true,
+      "kernel_ms": 0.09839,
+      "ref_ms": 1.1863,
+      "baseline_ms": 0.09254,
+      "baseline": "FlashAttention (SDPA: cuDNN\u2192FA-2)",
+      "speedup": 0.941,
+      "achieved_gbps": 1364.2,
+      "pct_peak_bw": 76.1
+    },
+    "s4k": {
+      "correct": true,
+      "kernel_ms": 0.17178,
+      "ref_ms": 2.31655,
+      "baseline_ms": 0.17218,
+      "baseline": "FlashAttention (SDPA: cuDNN\u2192FA-2)",
+      "speedup": 1.002,
+      "achieved_gbps": 1562.6,
+      "pct_peak_bw": 87.2
+    }
+  }
+}

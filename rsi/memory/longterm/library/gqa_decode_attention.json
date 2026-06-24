@@ -1,0 +1,6 @@
+{
+  "op": "gqa_decode_attention",
+  "speedup": 0.971,
+  "kernel_id": "f63ec096e0",
+  "ts": 1782337346.7131755
+}

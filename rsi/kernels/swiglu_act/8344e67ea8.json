@@ -1,0 +1,41 @@
+{
+  "op": "swiglu_act",
+  "kernel_id": "8344e67ea8",
+  "compiles": true,
+  "compile_log": "launched on shape 'decode'; output (32, 6144) torch.float16",
+  "ts": 1782331335.8937085,
+  "correct": true,
+  "max_abs_err": 0.0078125,
+  "max_rel_err": 0.05325603112578392,
+  "verify": {
+    "decode": {
+      "ok": true,
+      "max_abs_err": 0.0078125,
+      "max_rel_err": 0.017612699419260025
+    },
+    "prefill": {
+      "ok": true,
+      "max_abs_err": 0.0078125,
+      "max_rel_err": 0.05325603112578392
+    }
+  },
+  "speedup": 1.416,
+  "bench": {
+    "decode": {
+      "correct": true,
+      "kernel_ms": 0.00644,
+      "ref_ms": 0.01,
+      "speedup": 1.552,
+      "achieved_gbps": 183.0,
+      "pct_peak_bw": 10.2
+    },
+    "prefill": {
+      "correct": true,
+      "kernel_ms": 0.1138,
+      "ref_ms": 0.14703,
+      "speedup": 1.292,
+      "achieved_gbps": 1326.9,
+      "pct_peak_bw": 74.0
+    }
+  }
+}

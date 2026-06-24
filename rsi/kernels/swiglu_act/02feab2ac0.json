@@ -1,0 +1,56 @@
+{
+  "op": "swiglu_act",
+  "kernel_id": "02feab2ac0",
+  "compiles": true,
+  "compile_log": "launched on shape 'decode'; output (32, 6144) torch.float16",
+  "ts": 1782332972.4948285,
+  "correct": true,
+  "max_abs_err": 0.00048828125,
+  "max_rel_err": 0.0013689214829355478,
+  "verify": {
+    "decode": {
+      "ok": true,
+      "max_abs_err": 0.000244140625,
+      "max_rel_err": 0.0009389634942635894
+    },
+    "prefill": {
+      "ok": true,
+      "max_abs_err": 0.00048828125,
+      "max_rel_err": 0.0013689214829355478
+    }
+  },
+  "speedup": 1.509,
+  "bench": {
+    "decode": {
+      "correct": true,
+      "kernel_ms": 0.00595,
+      "ref_ms": 0.01002,
+      "speedup": 1.684,
+      "achieved_gbps": 198.3,
+      "pct_peak_bw": 11.1
+    },
+    "prefill": {
+      "correct": true,
+      "kernel_ms": 0.10858,
+      "ref_ms": 0.14693,
+      "speedup": 1.353,
+      "achieved_gbps": 1390.7,
+      "pct_peak_bw": 77.6
+    }
+  },
+  "profiled": true,
+  "profile": {
+    "decode": {
+      "kernel_ms": 0.00595,
+      "achieved_gbps": 198.3,
+      "pct_peak_bw": 11.1,
+      "verdict": "launch/occupancy bound \u2014 kernel-launch or low occupancy dominates; raise occupancy (block/warps), reduce launches, increase work per program"
+    },
+    "prefill": {
+      "kernel_ms": 0.10858,
+      "achieved_gbps": 1390.7,
+      "pct_peak_bw": 77.6,
+      "verdict": "memory-bandwidth bound (near roofline) \u2014 focus on reducing bytes moved / fusing"
+    }
+  }
+}

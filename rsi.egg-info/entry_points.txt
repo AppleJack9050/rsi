@@ -1,0 +1,2 @@
+[console_scripts]
+rsi = rsi.cli:main
