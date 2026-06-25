@@ -43,24 +43,6 @@ bash scripts/setup_env.sh        # rsi + PyTorch/Triton for Blackwell sm_120
 python3 scripts/smoke_test.py    # deterministic: torch+Triton+harness+memory, no LLM
 ```
 
-## Billing: your Claude subscription, never an API key
-
-All agents run on your **Claude subscription** (the same OAuth token in `~/.claude` that
-powers Claude Code) — **never** a metered API key. This is enforced in code:
-`config.enforce_subscription_auth()` strips `ANTHROPIC_API_KEY` /
-`ANTHROPIC_AUTH_TOKEN` / `ANTHROPIC_BASE_URL` / Bedrock / Vertex vars from the process
-and **refuses to run** if an API key is set or no subscription token is present. It fires
-at the start of every `rsi optimize` and in the orchestrator.
-
-```bash
-rsi auth        # show the active billing mode (should say: SUBSCRIPTION)
-```
-
-The `$` figures the runs print (`spent $1.14`) are **notional estimates** at API rates,
-shown for telemetry only. On a subscription nothing is charged in dollars — usage counts
-against your plan's rate-limit window, so the dollar "budget" caps just bound how much work
-each run does. To go easy on the rate-limit window, lower the effort: `RSI_EFFORT=medium`.
-
 ## Run
 
 ```bash
